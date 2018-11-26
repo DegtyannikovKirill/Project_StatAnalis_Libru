@@ -24,7 +24,7 @@ threegrams = ngrams((word for word in a.split() if pos(word) not in
 s = []
 for grams in threegrams:
     s.append(grams)
-#print(Counter(s))
+
 
 with open("2.txt") as f:
     text = f.read()
