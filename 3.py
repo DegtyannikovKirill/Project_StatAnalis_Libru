@@ -2,25 +2,28 @@
 #На основе полученных данных должны определяться фразы, характерные именно для этого автора.
 #Далее берется другие тексты и проверяются, использовали ли они фразы этого автора
 
+import nltk
 from nltk import ngrams
+nltk.download('stopwords')
 from collections import Counter
 import re
 import pymorphy2
+from nltk.corpus import stopwords
 
-# Анализатор типа слова
-def pos(word, morth=pymorphy2.MorphAnalyzer()): 
-      return morth.parse(word)[0].tag.POS
+
+stop_words = list(stopwords.words('russian'))
+# добавление доп. стоп-слов
+stop_words.extend(('это', 'э' , 'тебе' , 'своих' , 'тех')) 
+
 
 with open("1.txt") as f:
     text = f.read()
 a = re.sub(r'[^\w\s]',' ',text)
 a = a.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
 
 # Разделение на n-gramms
-threegrams = ngrams((word for word in a.split() if pos(word) not in  
-                    functors_pos), n)                               
+threegrams = ngrams((w for w in a.split() if w not in stop_words), n)                               
 s = []
 for grams in threegrams:
     s.append(grams)
@@ -31,9 +34,9 @@ with open("2.txt") as f:
 b = re.sub(r'[^\w\s]',' ',text)
 b = b.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in b.split() if pos(word) not in  
-                    functors_pos), n)
+
+# Разделение на n-gramms
+threegrams = ngrams((w for w in b.split() if w not in stop_words), n)
 t = []
 
 for grams in threegrams:
@@ -51,13 +54,13 @@ with open("3.txt") as f:
 c = re.sub(r'[^\w\s]',' ',text)
 c = c.lower()
 n = 3
-threegrams = ngrams(c.split(), n)
+threegrams = ngrams((w for w in c.split() if w not in stop_words), n)
 p = []
 
 for grams in threegrams:
     p.append(grams)
 
-result2=list(set(s) & set(p))
+result2 = list(set(s) & set(p))
 print (result2)
 
 print('\n__________________')
@@ -70,17 +73,14 @@ with open("4.txt") as f:
 d = re.sub(r'[^\w\s]',' ',text)
 d = d.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in d.split() if pos(word) not in  
-                    functors_pos), n)
+threegrams = ngrams((w for w in d.split() if w not in stop_words), n)
 
 k = []
-
 for grams in threegrams:
     k.append(grams)
 
-result3=list(set(s) & set(k))
-print(result3)
+result3 = list(set(s) & set(k))
+print (result3)
 
 print('\n__________________')
 print('__________________\n')
@@ -90,15 +90,13 @@ with open("5.txt") as f:
 e = re.sub(r'[^\w\s]',' ',text)
 e = e.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in e.split() if pos(word) not in  
-                    functors_pos), n)
+threegrams = ngrams((w for w in e.split() if w not in stop_words), n)
 g = []
 
 for grams in threegrams:
     g.append(grams)
 
-result4=list(set(s) & set(g))
+result4 = list(set(s) & set(g))
 print(result4)
 
 print('\n__________________')
@@ -109,15 +107,13 @@ with open("6.txt") as f:
 r = re.sub(r'[^\w\s]',' ',text)
 r = r.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in r.split() if pos(word) not in  
-                    functors_pos), n)
+threegrams = ngrams((w for w in r.split() if w not in stop_words), n)
 y = []
 
 for grams in threegrams:
     y.append(grams)
 
-result5=list(set(s) & set(y))
+result5 = list(set(s) & set(y))
 print(result5)
 
 print('\n__________________')
@@ -128,9 +124,8 @@ with open("7.txt") as f:
 u = re.sub(r'[^\w\s]',' ',text)
 u = u.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in u.split() if pos(word) not in  
-                    functors_pos), n)
+
+threegrams = ngrams((w for w in u.split() if w not in stop_words), n)
 l = []
 
 for grams in threegrams:
@@ -147,9 +142,7 @@ with open("8.txt") as f:
 h = re.sub(r'[^\w\s]',' ',text)
 h = h.lower()
 n = 3
-functors_pos = {'INTJ', 'PRCL', 'CONJ', 'PREP'}
-threegrams = ngrams((word for word in h.split() if pos(word) not in  
-                    functors_pos), n)
+threegrams = ngrams((w for w in h.split() if w not in stop_words), n)
 v = []
 
 for grams in threegrams:
@@ -157,6 +150,8 @@ for grams in threegrams:
 
 result7=list(set(s) & set(v))
 print(result7)
+
+#print(stop_words)
 
 
 
