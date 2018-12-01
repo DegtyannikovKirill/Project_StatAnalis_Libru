@@ -10,7 +10,7 @@ import re
 import pymorphy2
 from nltk.corpus import stopwords
 
-
+# скачивание стоп-слов
 stop_words = list(stopwords.words('russian'))
 # добавление доп. стоп-слов
 stop_words.extend(('это', 'э' , 'тебе' , 'своих' , 'тех')) 
@@ -28,8 +28,9 @@ s = []
 for grams in threegrams:
     s.append(grams)
 
+print(Counter(s))
 
-with open("2.txt") as f:
+"""with open("2.txt") as f:
     text = f.read()
 b = re.sub(r'[^\w\s]',' ',text)
 b = b.lower()
@@ -151,7 +152,7 @@ for grams in threegrams:
 result7=list(set(s) & set(v))
 print(result7)
 
-#print(stop_words)
+#print(stop_words)"""
 
 
 
