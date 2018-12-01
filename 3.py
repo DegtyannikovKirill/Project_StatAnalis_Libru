@@ -24,13 +24,15 @@ n = 3
 
 # Разделение на n-gramms
 threegrams = ngrams((w for w in a.split() if w not in stop_words), n)                               
-s = []
+list_ngrams = []
 for grams in threegrams:
-    s.append(grams)
+    list_ngrams.append(grams)
 
-print(Counter(s))
+# часто( > 2 раз) встречаемые фразы первого песателя
+frazi = dict.keys(dict(Counter(list_ngrams).most_common(28)))
+print('\nЧасто встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
 
-"""with open("2.txt") as f:
+with open("2.txt") as f:
     text = f.read()
 b = re.sub(r'[^\w\s]',' ',text)
 b = b.lower()
@@ -43,8 +45,8 @@ t = []
 for grams in threegrams:
     t.append(grams)
 
-result1=list(set(s) & set(t))
-print (result1)
+result1=list(set(frazi) & set(t))
+print ('1) Сравнение частых фраз Дугласа Адамса с первым произведение Рэя Брэдбери\n\n',result1)
 
 print('\n__________________')
 print('__________________\n')
@@ -61,8 +63,8 @@ p = []
 for grams in threegrams:
     p.append(grams)
 
-result2 = list(set(s) & set(p))
-print (result2)
+result2 = list(set(frazi) & set(p))
+print ('2) Сравнение частых фраз Дугласа Адамса со вторым произведением Рэя Брэдбери\n\n',result2)
 
 print('\n__________________')
 print('__________________\n')
@@ -80,8 +82,8 @@ k = []
 for grams in threegrams:
     k.append(grams)
 
-result3 = list(set(s) & set(k))
-print (result3)
+result3 = list(set(frazi) & set(k))
+print ('3) Сравнение частых фраз Дугласа Адамса с третьим произведением Рэя Брэдбери\n\n',result3)
 
 print('\n__________________')
 print('__________________\n')
@@ -97,8 +99,8 @@ g = []
 for grams in threegrams:
     g.append(grams)
 
-result4 = list(set(s) & set(g))
-print(result4)
+result4 = list(set(frazi) & set(g))
+print('4) Сравнение частых фраз Дугласа Адамса с четвертым произведением Рэя Брэдбери\n\n',result4)
 
 print('\n__________________')
 print('__________________\n')
@@ -114,8 +116,8 @@ y = []
 for grams in threegrams:
     y.append(grams)
 
-result5 = list(set(s) & set(y))
-print(result5)
+result5 = list(set(frazi) & set(y))
+print('5) Сравнение частых фраз Дугласа Адамса с пятым произведением Рэя Брэдбери\n\n',result5)
 
 print('\n__________________')
 print('__________________\n')
@@ -132,8 +134,8 @@ l = []
 for grams in threegrams:
     l.append(grams)
 
-result6=list(set(s) & set(l))
-print(result6)
+result6=list(set(frazi) & set(l))
+print('6) Сравнение частых фраз Дугласа Адамса с шестым произведением Рэя Брэдбери\n\n',result6)
 
 print('\n__________________')
 print('__________________\n')
@@ -149,10 +151,10 @@ v = []
 for grams in threegrams:
     v.append(grams)
 
-result7=list(set(s) & set(v))
-print(result7)
+result7=list(set(frazi) & set(v))
+print('7) Сравнение частых фраз Дугласа Адамса с седьмым произведением Рэя Брэдбери\n\n',result7)
 
-#print(stop_words)"""
+#print(stop_words)
 
 
 
