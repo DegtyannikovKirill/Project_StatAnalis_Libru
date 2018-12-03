@@ -13,7 +13,8 @@ from nltk.corpus import stopwords
 # скачивание стоп-слов
 stop_words = list(stopwords.words('russian'))
 # добавление доп. стоп-слов
-stop_words.extend(('это', 'э' , 'тебе' , 'своих' , 'тех')) 
+stop_words.extend(('это', 'э' , 'тебе' , 'своих' , 'тех'))
+#stop_words = []
 
 
 with open("1.txt") as f:
@@ -28,10 +29,10 @@ list_ngrams = []
 for grams in threegrams:
     list_ngrams.append(grams)
 
-# часто( > 2 раз) встречаемые фразы первого песателя
-frazi = dict.keys(dict(Counter(list_ngrams).most_common(28)))
-print('\nЧасто ( > 2 раз) встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
-
+# часто встречаемые фразы первого песателя
+frazi = dict.keys(dict(Counter(list_ngrams).most_common(40)[5:35]))
+print('\nЧасто встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
+#print(dict(Counter(list_ngrams).most_common(40)))
 with open("2.txt") as f:
     text = f.read()
 b = re.sub(r'[^\w\s]',' ',text)
