@@ -30,7 +30,7 @@ for grams in threegrams:
 
 # часто( > 2 раз) встречаемые фразы первого песателя
 frazi = dict.keys(dict(Counter(list_ngrams).most_common(28)))
-print('\nЧасто встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
+print('\nЧасто ( > 2 раз) встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
 
 with open("2.txt") as f:
     text = f.read()
