@@ -17,7 +17,7 @@ stop_words.extend(('это', 'э' , 'тебе' , 'своих' , 'тех'))
 #stop_words = []
 
 
-with open("1.txt") as f:
+with open("Дуглас_Адамс.txt") as f:
     text = f.read()
 a = re.sub(r'[^\w\s]',' ',text)
 a = a.lower()
@@ -33,7 +33,7 @@ for grams in threegrams:
 frazi = dict.keys(dict(Counter(list_ngrams).most_common(40)[5:35]))
 print('\nЧасто встречаемые фразы Дугласа Адамса\n\n', *frazi, '\n')
 #print(dict(Counter(list_ngrams).most_common(40)))
-with open("2.txt") as f:
+with open("Рэй_Брэдбери_1.txt") as f:
     text = f.read()
 b = re.sub(r'[^\w\s]',' ',text)
 b = b.lower()
@@ -53,7 +53,7 @@ print('\n__________________')
 print('__________________\n')
     
 
-with open("3.txt") as f:
+with open("Рэй_Брэдбери_2.txt") as f:
     text = f.read()
 c = re.sub(r'[^\w\s]',' ',text)
 c = c.lower()
@@ -72,7 +72,7 @@ print('__________________\n')
 
 
 
-with open("4.txt") as f:
+with open("Рэй_Брэдбери_3.txt") as f:
     text = f.read()
 d = re.sub(r'[^\w\s]',' ',text)
 d = d.lower()
@@ -89,7 +89,7 @@ print ('3) Сравнение частых фраз Дугласа Адамса 
 print('\n__________________')
 print('__________________\n')
 
-with open("5.txt") as f:
+with open("Рэй_Брэдбери_4.txt") as f:
     text = f.read()
 e = re.sub(r'[^\w\s]',' ',text)
 e = e.lower()
@@ -106,7 +106,7 @@ print('4) Сравнение частых фраз Дугласа Адамса �
 print('\n__________________')
 print('__________________\n')
 
-with open("6.txt") as f:
+with open("Рэй_Брэдбери_5.txt") as f:
     text = f.read()
 r = re.sub(r'[^\w\s]',' ',text)
 r = r.lower()
@@ -123,7 +123,7 @@ print('5) Сравнение частых фраз Дугласа Адамса �
 print('\n__________________')
 print('__________________\n')
 
-with open("7.txt") as f:
+with open("Рэй_Брэдбери_6.txt") as f:
     text = f.read()
 u = re.sub(r'[^\w\s]',' ',text)
 u = u.lower()
@@ -141,7 +141,7 @@ print('6) Сравнение частых фраз Дугласа Адамса �
 print('\n__________________')
 print('__________________\n')
 
-with open("8.txt") as f:
+with open("Рэй_Брэдбери_7.txt") as f:
     text = f.read()
 h = re.sub(r'[^\w\s]',' ',text)
 h = h.lower()
